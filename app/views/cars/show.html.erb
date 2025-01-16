@@ -1,13 +1,35 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.redd.it/this-update-brought-out-lots-of-cars-i-like-it-so-far-ill-v0-ukutcy6kfred1.jpg?width=3840&format=pjpg&auto=webp&s=5e66f19c16c38c979950bf6a40df071bef3be76d">
-  <div class="container text-center">
-    <h1>Here is your <%=@car.brand%> <%=@car.model%></h1>
-  </div>
+<h1><%= @car.brand %></h1>
+<h1><%= @car.model %></h1>
+<h1><%= @car.year %></h1>
+<h1><%= @car.fuel %></h1>
 
-  <div class="card-category"
-    <h1>Check out the details of your dream car.</h1>
-    <p><%= @car.brand %></p>
-    <p><%= @car.model %></p>
-    <p><%= @car.year %></p>
-    <p><%= @car.fuel %></p>
-  </div>
-</div>
+<% if @car.favourites.empty? %>
+  <%= simple_form_for [@car, @favourite] do |f| %>
+    <%= f.submit 'Add to your garage', class: 'btn btn-flat w-100' %>
+  <% end %>
+<% else %>
+  <p>This car is one of your favourites!</p>
+<% end %>
+
+<hr>
+
+<h2>New Review</h2>
+<%= simple_form_for [@car, @review] do |f| %>
+  <%= f.input :comment, label: false, placeholder: 'Your comment here...' %>
+  <%= f.input :rating, label: false, collection: 1..5, prompt: 'Select a rating' %>
+  <%= f.submit 'Submit Review', class: 'btn btn-flat w-100' %>
+<% end %>
+
+<h2>Reviews</h2>
+<% @car.reviews.each do |review| %>
+  <p><strong>Comment:</strong> <%= review.comment %></p>
+  <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+<% end %>
+
+<%= link_to cars_path, class: "btn btn-ghost mt-4" do %>
+    <i class="fa-solid fa-arrow-left"></i> Back to Garage
+  <% end %>
+
+  <%= link_to favourites_path, class: "btn btn-ghost mt-4" do %>
+  <i class="fa-solid fa-arrow-left"></i> Go to Favourites
+<% end %>
