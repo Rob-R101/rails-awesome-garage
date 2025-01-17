@@ -1,0 +1,40 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: white;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.logo {
+  height: 50px; /* Adjust the height as needed */
+  width: auto;  /* Maintain aspect ratio */
+}
+
+.navbar {
+  position: relative;
+  overflow: hidden;
+}
+
+.car-icon i {
+  font-size: 5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: carMove 10s linear infinite;
+  color:black;
+}
+
+@keyframes carMove {
+  from {
+    transform: translateX(-50px) translateY(-50%);
+  }
+  to {
+    transform: translateX(100vw) translateY(-50%);
+  }
+}

@@ -1,0 +1,115 @@
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  height: 100vh;
+}
+
+/* Banner Section */
+.banner{
+  position: relative;
+  height: 100vh; /* Full screen height */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+              url('https://i.redd.it/this-update-brought-out-lots-of-cars-i-like-it-so-far-ill-v0-ukutcy6kfred1.jpg?width=3840&format=pjpg&auto=webp&s=5e66f19c16c38c979950bf6a40df071bef3be76d')
+              center/cover no-repeat; /* Center image and cover */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+#hero {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f4f4f4;
+}
+
+button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+
+.heading {
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 1rem; /* Space below the heading */
+}
+
+.banner .btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #007BFF;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  transition: background 0.3s;
+  margin-top: 1rem; /* Space above the button */
+}
+
+.banner .btn:hover {
+  background: #0056b3;
+}
+
+.banner i {
+  margin-right: 0.5rem;
+}
+
+/* Footer Section */
+.footer {
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent; /* Allow the image to show through */
+  color: #fff;
+  font-size: 0.875rem;
+  padding: 1rem 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

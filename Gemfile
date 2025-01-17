@@ -1,14 +1,20 @@
 source "https://rubygems.org"
 
+gem "bootstrap", "~> 5.2"
+
+gem "autoprefixer-rails"
+
+gem "font-awesome-sass", "~> 6.1"
+
+gem "simple_form"
+
+gem "sassc-rails"
+
 ruby "3.3.5"
 
 gem 'pg', '~> 1.2'
 
-gem 'sassc-rails', '~> 2.1'
 
-gem 'bootstrap', '~> 5.1.3'
-
-gem 'simple_form', '~> 5.2'
 
 
 

@@ -1,35 +1,40 @@
-<h1><%= @car.brand %></h1>
-<h1><%= @car.model %></h1>
-<h1><%= @car.year %></h1>
-<h1><%= @car.fuel %></h1>
+<div class="text-black">
+  <h1><%= @car.brand %></h1>
+  <h1><%= @car.model %></h1>
+  <h1><%= @car.year %></h1>
+  <h1><%= @car.fuel %></h1>
+</div>
 
-<% if @car.favourites.empty? %>
-  <%= simple_form_for [@car, @favourite] do |f| %>
-    <%= f.submit 'Add to your garage', class: 'btn btn-flat w-100' %>
+<div class="text-black">
+  <% if @car.favourites.empty? %>
+    <%= simple_form_for [@car, @favourite] do |f| %>
+      <%= f.submit 'Add to your garage', class: 'btn btn-flat w-100' %>
+    <% end %>
+  <% else %>
+    <p>This car is one of your favourites!</p>
   <% end %>
-<% else %>
-  <p>This car is one of your favourites!</p>
-<% end %>
-
+</div>
 <hr>
 
-<h2>New Review</h2>
-<%= simple_form_for [@car, @review] do |f| %>
-  <%= f.input :comment, label: false, placeholder: 'Your comment here...' %>
-  <%= f.input :rating, label: false, collection: 1..5, prompt: 'Select a rating' %>
-  <%= f.submit 'Submit Review', class: 'btn btn-flat w-100' %>
-<% end %>
-
-<h2>Reviews</h2>
-<% @car.reviews.each do |review| %>
-  <p><strong>Comment:</strong> <%= review.comment %></p>
-  <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
-<% end %>
-
-<%= link_to cars_path, class: "btn btn-ghost mt-4" do %>
-    <i class="fa-solid fa-arrow-left"></i> Back to Garage
+<div class="text-black">
+  <h2>New Review</h2>
+  <%= simple_form_for [@car, @review] do |f| %>
+    <%= f.input :comment, label: false, placeholder: 'Your comment here...' %>
+    <%= f.input :rating, label: false, collection: 1..5, prompt: 'Select a rating' %>
+    <%= f.submit 'Submit Review', class: 'btn btn-flat w-100' %>
   <% end %>
 
-  <%= link_to favourites_path, class: "btn btn-ghost mt-4" do %>
-  <i class="fa-solid fa-arrow-left"></i> Go to Favourites
-<% end %>
+<h2>Reviews</h2>
+  <% @car.reviews.each do |review| %>
+    <p><strong>Comment:</strong> <%= review.comment %></p>
+    <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+  <% end %>
+
+  <%= link_to cars_path, class: "btn btn-ghost mt-4" do %>
+      <i class="fa-solid fa-arrow-left"></i> Back to Garage
+    <% end %>
+
+    <%= link_to favourites_path, class: "btn btn-ghost mt-4" do %>
+    <i class="fa-solid fa-arrow-left"></i> Go to Favourites
+  <% end %>
+</div>

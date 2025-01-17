@@ -1,0 +1,20 @@
+.navbar {
+  position: relative;
+  overflow: hidden;
+}
+
+.car-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: carMove 10s linear infinite;
+}
+
+@keyframes carMove {
+  from {
+    transform: translateX(-50px) translateY(-50%);
+  }
+  to {
+    transform: translateX(100vw) translateY(-50%);
+  }
+}
