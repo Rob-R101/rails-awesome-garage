@@ -1,19 +1,30 @@
-<div class="banner2" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.redd.it/this-update-brought-out-lots-of-cars-i-like-it-so-far-ill-v0-ukutcy6kfred1.jpg?width=3840&format=pjpg&auto=webp&s=5e66f19c16c38c979950bf6a40df071bef3be76d">
+<div class="banner2" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://i.redd.it/this-update-brought-out-lots-of-cars-i-like-it-so-far-ill-v0-ukutcy6kfred1.jpg?width=3840&format=pjpg&auto=webp&s=5e66f19c16c38c979950bf6a40df071bef3be76d)">
   <div class="container text-center">
     <h1>Welcome to your Awesome Garage!</h1>
     <p>Organize your dream cars in your personalized categories.</p>
   </div>
 </div>
 
-<div class="container mt-4">
-  <div class="row">
-    <% @cars.each do |car| %>
-      <div class="col-md-4 mb-3">
-        <div class="card-category">
-          <h2><%= link_to car.brand, car_path(car), class: "text-black text-decoration-none" %></h2>
-          <p><%= car.model %></p>
+<div class="text-black">
+  <div class="container mt-4">
+    <div class="row">
+      <% @cars.each do |car| %>
+        <div class="col-md-4 mb-3">
+          <div class="card-category text-center">
+            <!-- Display car photo if available -->
+            <% if photo_url_for(car) %>
+              <%= image_tag photo_url_for(car), alt: "#{car.brand} #{car.model}", class: "img-fluid mb-3 rounded", style: "width: 300px; height: 200px; object-fit: cover;" %>
+            <% else %>
+              <p>No photo available.</p>
+            <% end %>
+
+            <!-- Car details -->
+            <h2><%= link_to car.brand, car_path(car), class: "text-black text-decoration-none" %></h2>
+            <p><%= car.model %></p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
+    <a href="https://www.vecteezy.com/free-photos/car">Car Stock photos by Vecteezy</a>
   </div>
 </div>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <!-- Shield Background -->
+  <path d="M150 10 L270 10 L290 50 L270 90 L150 90 L30 90 L10 50 L30 10 Z" fill="#0066cc"/>
+  <path d="M150 15 L265 15 L283 50 L265 85 L150 85 L35 85 L17 50 L35 15 Z" fill="#0088ff"/>
+  
+  <!-- Car Silhouette - now in black -->
+  <path d="M90 45 C90 45 100 35 120 35 L180 35 C200 35 210 45 210 45 C220 45 225 50 225 55 L225 65 C225 70 220 72 215 72 L85 72 C80 72 75 70 75 65 L75 55 C75 50 80 45 90 45" 
+        fill="#000000" fill-opacity="0.9"/>
+  <path d="M95 55 A8 8 0 0 1 111 55 A8 8 0 0 1 95 55" fill="#333333"/>
+  <path d="M189 55 A8 8 0 0 1 205 55 A8 8 0 0 1 189 55" fill="#333333"/>
+  
+  <!-- Sparkles -->
+  <circle cx="160" cy="40" r="1" fill="white"/>
+  <circle cx="165" cy="38" r="1" fill="white"/>
+  <circle cx="170" cy="42" r="1" fill="white"/>
+  
+  <!-- Main Text -->
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="50%" style="stop-color:#d0d0d0"/>
+      <stop offset="100%" style="stop-color:#a0a0a0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Text with 3D effect -->
+  <g transform="translate(150, 65)" text-anchor="middle">
+    <!-- Shadow layer -->
+    <text y="1" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="#000000" opacity="0.3">
+      AWESOME GARAGE
+    </text>
+    <!-- Main text with gradient -->
+    <text font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="url(#textGradient)">
+      AWESOME GARAGE
+    </text>
+  </g>
+  
+  <!-- EST. 2025 -->
+  <text x="150" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#ffffff">
+    EST. 2025
+  </text>
+</svg>
