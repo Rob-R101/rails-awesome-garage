@@ -1,40 +1,73 @@
-<div class="text-black">
-  <h1><%= @car.brand %></h1>
-  <h1><%= @car.model %></h1>
-  <h1><%= @car.year %></h1>
-  <h1><%= @car.fuel %></h1>
-</div>
+<div class="container mt-5">
+  <!-- Car Details Section -->
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center">
+      <% if @car.photo.attached? %>
+        <%= image_tag @car.photo, class: "car-photo img-fluid rounded shadow-sm" %>
+      <% else %>
+        <div class="text-center text-muted border rounded p-5">
+          <p>No photo available</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-6 text-black">
+      <h1 class="display-4"><%= @car.brand %></h1>
+      <h2 class="text-muted"><%= @car.model %></h2>
+      <p><strong>Year:</strong> <%= @car.year %></p>
+      <p><strong>Fuel Type:</strong> <%= @car.fuel %></p>
+    </div>
+  </div>
 
-<div class="text-black">
-  <% if @car.favourites.empty? %>
-    <%= simple_form_for [@car, @favourite] do |f| %>
-      <%= f.submit 'Add to your garage', class: 'btn btn-flat w-100' %>
+  <hr class="my-5">
+
+  <!-- Favourites Section -->
+  <div class="text-black">
+    <% if @car.favourites.empty? %>
+      <%= simple_form_for [@car, @favourite], html: { class: "d-inline-block" } do |f| %>
+        <%= f.submit 'Add to your garage', class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <p class="text-success"><strong>This car is one of your favourites!</strong></p>
     <% end %>
-  <% else %>
-    <p>This car is one of your favourites!</p>
-  <% end %>
-</div>
-<hr>
+  </div>
 
-<div class="text-black">
-  <h2>New Review</h2>
-  <%= simple_form_for [@car, @review] do |f| %>
-    <%= f.input :comment, label: false, placeholder: 'Your comment here...' %>
-    <%= f.input :rating, label: false, collection: 1..5, prompt: 'Select a rating' %>
-    <%= f.submit 'Submit Review', class: 'btn btn-flat w-100' %>
-  <% end %>
+  <hr class="my-5">
 
-<h2>Reviews</h2>
-  <% @car.reviews.each do |review| %>
-    <p><strong>Comment:</strong> <%= review.comment %></p>
-    <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
-  <% end %>
+  <!-- Reviews Section -->
+  <div class="text-black">
+    <h2 class="mb-4">New Review</h2>
+    <div class="card p-4 shadow-sm">
+      <%= simple_form_for [@car, @review] do |f| %>
+        <div class="form-group">
+          <%= f.input :comment, label: "Comment", placeholder: 'Your comment here...', input_html: { class: 'form-control' } %>
+        </div>
+        <div class="form-group">
+          <%= f.input :rating, collection: 1..5, prompt: 'Select a rating', label: "Rating", input_html: { class: 'form-control' } %>
+        </div>
+        <%= f.submit 'Submit Review', class: 'btn btn-primary w-100 mt-3' %>
+      <% end %>
+    </div>
 
-  <%= link_to cars_path, class: "btn btn-ghost mt-4" do %>
+    <h2 class="mt-5">Reviews</h2>
+    <% if @car.reviews.any? %>
+      <% @car.reviews.each do |review| %>
+        <div class="card p-3 mb-3 shadow-sm">
+          <p><strong>Comment:</strong> <%= review.comment %></p>
+          <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted">No reviews yet. Be the first to review this car!</p>
+    <% end %>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="mt-5 d-flex justify-content-between">
+    <%= link_to cars_path, class: "btn btn-secondary" do %>
       <i class="fa-solid fa-arrow-left"></i> Back to Garage
     <% end %>
-
-    <%= link_to favourites_path, class: "btn btn-ghost mt-4" do %>
-    <i class="fa-solid fa-arrow-left"></i> Go to Favourites
-  <% end %>
+    <%= link_to favourites_path, class: "btn btn-secondary" do %>
+      <i class="fa-solid fa-heart"></i> Go to Favourites
+    <% end %>
+  </div>
 </div>

@@ -1,19 +1,49 @@
-<div class="text-black">
-<h1>My Garage</h1>
-<ul>
-  <% @favourites.each do |favourite| %>
-    <p><%= favourite.car.model %></p>
-    <%= link_to "Delete",
-      favourite_path(favourite),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-    %>
-<% end %>
-</div>
+<div class="container mt-5">
+  <h1 class="text-black mb-4">My Garage</h1>
 
-<hr>
+  <div class="row">
+    <% @favourites.each do |favourite| %>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow-sm">
+          <!-- Car Photo -->
+          <% if favourite.car.photo.attached? %>
+            <%= image_tag favourite.car.photo, class: "car-photo2 card-img-top" %>
+          <% else %>
+            <div class="text-center text-muted p-5">
+              <p>No photo available</p>
+            </div>
+          <% end %>
 
-<div class="text-black">
-<%= link_to cars_path, class: "btn btn-ghost mt-4" do %>
-  <i class="fa-solid fa-arrow-left"></i> Back to Garage
-<% end %>
+          <div class="card-body text-center">
+            <h5 class="card-title"><%= favourite.car.model %></h5>
+              <% if favourite.car.reviews.any? %>
+                <div class="reviews text-start">
+                  <h6>Reviews:</h6>
+                  <% favourite.car.reviews.each do |review| %>
+                    <p><strong>Comment:</strong> <%= review.comment %></p>
+                    <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+                    <hr class="my-2">
+                  <% end %>
+                </div>
+              <% else %>
+                <p class="text-muted">No reviews yet.</p>
+              <% end %>
+            <%= link_to "Delete",
+                favourite_path(favourite),
+                class: "btn btn-danger mt-2",
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="my-5">
+
+  <!-- Back to Garage Button -->
+  <div class="text-center">
+    <%= link_to cars_path, class: "btn btn-secondary" do %>
+      <i class="fa-solid fa-arrow-left"></i> Back to Garage
+    <% end %>
+  </div>
 </div>

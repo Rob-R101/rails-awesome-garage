@@ -13,3 +13,19 @@
 
 // Animated car navbar
 @import "components/animated_car";
+
+.car-photo {
+  width: 100%;
+  max-width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.car-photo2 {
+  width: 100%;          /* Ensure the image fills the card width */
+  height: 200px;        /* Fixed height for uniform size */
+  object-fit: cover;    /* Crop the image to maintain aspect ratio */
+  border-radius: 4px 4px 0 0; /* Rounded corners at the top */
+}
